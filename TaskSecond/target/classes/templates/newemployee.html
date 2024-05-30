@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>New Employee</h1>
+        <div class="form-container">
+            <form th:action="@{/employeeadded}" method="POST" th:object="${newemployee}">
+                <label for="id">Enter Your id</label>
+                <input type="text" placeholder="Enter id" id="id" th:field="*{id}">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                
+                 <label for="firstname">Enter Your firstname</label>
+                <input type="text" placeholder="Enter firstname" name="firstname" th:field="*{firstname}">
+                <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+                
+                 <label for="lastname">Enter Your lastname</label>
+                <input type="text" placeholder="Enter firstname" name="lastname" th:field="*{lastname}">
+                <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+                
+
+                <label for="department">Enter Your department</label>
+                <input type="text" placeholder="Enter department" name="department" th:field="*{department}">
+                <span th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></span>
+
+           
+				
+                <label for="email">Enter Your email</label>
+                <input type="email" placeholder="Enter emailid" name="email" th:field="*{email}">
+
+    
+                <input type="submit">
+                
+            </form>
+            <div th:if="${message}" th:text="${message}"></div>
+        </div>
+    </div>
+</body>
+</html>
+

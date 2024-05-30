@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Employee List</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>lastname</th>
+                    <th>id</th>
+                    <th>department</th>
+                    <th>email</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the list of employees -->
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.Firstname}">First name</td>
+                    <td th:text="${employee.lastname}">last name</td>
+                    <td th:text="${employee.id}">id</td>
+                    <td th:text="${employee.department}">department</td>
+                    <td th:text="${employee.email}">email</td>
+                    
+                    <td>
+                    <form th:action="@{/employee/delete}" method="POST"> 
+                    <input type="hidden" name="id" th:value="${employee.id}">
+                    <button type="submit">Delete</button>
+                    
+                    </form>
+                    </td>
+                    
+                    <td>
+                    <form th:action="@{/employee/update}" method="GET"> 
+                      <input type="hidden" name="id" th:value="${employee.id}">
+                      <button type="submit">update</button>                 
+                      
+                       </form>
+                       </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
